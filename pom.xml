@@ -12,7 +12,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <modules>
-        <module>jersey</module>
+        <module>jersey1</module>
+        <module>jersey2</module>
         <module>httpclient</module>
         <module>okhttp3</module>
     </modules>

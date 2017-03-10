@@ -1,4 +1,4 @@
-package com.automationrhapsody.jersey.model;
+package com.automationrhapsody.jersey1.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

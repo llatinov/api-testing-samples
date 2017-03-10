@@ -1,6 +1,6 @@
-package com.automationrhapsody.jersey.rules;
+package com.automationrhapsody.jersey2.rules;
 
-import com.automationrhapsody.jersey.model.Person;
+import com.automationrhapsody.jersey2.model.Person;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,8 +32,8 @@ public class PersonServiceJerseyClient extends ExternalResource {
     @Override
     public void before() throws Throwable {
         ClientConfig clientConfig = new ClientConfig()
-            .property(ClientProperties.READ_TIMEOUT, 50000)
-            .property(ClientProperties.CONNECT_TIMEOUT, 2000);
+            .property(ClientProperties.READ_TIMEOUT, 30_000)
+            .property(ClientProperties.CONNECT_TIMEOUT, 2_000);
 
         personServiceClient = ClientBuilder
             .newClient(clientConfig)

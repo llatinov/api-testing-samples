@@ -8,22 +8,28 @@
         <artifactId>api-testing-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.automationrhapsody.jersey</groupId>
-    <artifactId>jersey</artifactId>
+    <groupId>com.automationrhapsody.jersey1</groupId>
+    <artifactId>jersey1</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>jersey</name>
+    <name>jersey1</name>
+    <properties>
+        <jersey1.version>1.19.3</jersey1.version>
+    </properties>
     <dependencies>
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
+            <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-client</artifactId>
-            <version>2.25.1</version>
-            <scope>test</scope>
+            <version>${jersey1.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>2.25.1</version>
-            <scope>test</scope>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>${jersey1.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-bundle</artifactId>
+            <version>${jersey1.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
