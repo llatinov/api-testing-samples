@@ -16,6 +16,7 @@
         <module>jersey2</module>
         <module>httpclient</module>
         <module>okhttp3</module>
+        <module>rest-assured</module>
     </modules>
     <dependencies>
         <dependency>

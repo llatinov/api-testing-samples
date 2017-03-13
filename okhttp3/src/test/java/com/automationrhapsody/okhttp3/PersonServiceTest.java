@@ -5,8 +5,8 @@ import com.automationrhapsody.okhttp3.utils.PersonServiceHttpClient;
 
 import java.io.IOException;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,13 +26,15 @@ public class PersonServiceTest {
         personJson = JsonManager.createPerson("1234", "First Name", "Last Name", "Email");
     }
 
-    @After
-    public void cleanUp() {
-        personServiceHttpClient.remove();
-    }
-
     @Test
-    public void testSaveAndGet() throws IOException {
+    public void testAllOperations() throws IOException {
+        Response persons = personServiceHttpClient.getAll();
+        JSONArray jsonArray = JsonManager.getJsonArray(persons);
+        assertThat(jsonArray.size(), is(4));
+        for (int i = 0; i < 4; i++) {
+            assertThat(JsonManager.getJsonObject(jsonArray, i).get("id"), is(i + 1L));
+        }
+
         Response saveResult = personServiceHttpClient.save(personJson);
         assertThat(saveResult.body().string(), is("Added Person with id=1234"));
 
@@ -42,5 +44,16 @@ public class PersonServiceTest {
         assertThat(jsonObject.get("firstName"), is("First Name"));
         assertThat(jsonObject.get("lastName"), is("Last Name"));
         assertThat(jsonObject.get("email"), is("Email"));
+
+        persons = personServiceHttpClient.getAll();
+        jsonArray = JsonManager.getJsonArray(persons);
+        assertThat(jsonArray.size(), is(5));
+
+        Response result = personServiceHttpClient.remove();
+        assertThat(result.body().string(), is("Last person remove. Total count: 4"));
+
+        persons = personServiceHttpClient.getAll();
+        jsonArray = JsonManager.getJsonArray(persons);
+        assertThat(jsonArray.size(), is(4));
     }
 }

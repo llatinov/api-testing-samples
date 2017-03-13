@@ -42,7 +42,9 @@ public class PersonServiceTest {
         persons = CLIENT.getAll();
         assertThat(persons.size(), is(5));
 
-        CLIENT.remove();
+        String result = CLIENT.remove();
+        assertThat(result, is("Last person remove. Total count: 4"));
+
         persons = CLIENT.getAll();
         assertThat(persons.size(), is(4));
     }

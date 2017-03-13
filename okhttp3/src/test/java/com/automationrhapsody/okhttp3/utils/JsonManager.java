@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -35,6 +36,18 @@ public final class JsonManager {
             return (JSONObject) new JSONParser().parse(response.body().string());
         } catch (ParseException | IOException e) {
             return new JSONObject();
+        }
+    }
+
+    public static JSONObject getJsonObject(JSONArray jsonArray, int index) {
+        return (JSONObject) jsonArray.get(index);
+    }
+
+    public static JSONArray getJsonArray(Response response) {
+        try {
+            return (JSONArray) new JSONParser().parse(response.body().string());
+        } catch (ParseException | IOException e) {
+            return new JSONArray();
         }
     }
 

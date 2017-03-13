@@ -12,10 +12,6 @@
     <artifactId>httpclient</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>httpclient</name>
-    <url>http://maven.apache.org</url>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
