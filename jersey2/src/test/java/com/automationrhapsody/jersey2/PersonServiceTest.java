@@ -1,21 +1,16 @@
 package com.automationrhapsody.jersey2;
 
 import com.automationrhapsody.jersey2.model.Person;
-import com.automationrhapsody.jersey2.rules.PersonServiceJerseyClient;
 
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.ClassRule;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class PersonServiceTest {
-
-    @ClassRule
-    public static final PersonServiceJerseyClient CLIENT = new PersonServiceJerseyClient();
+public class PersonServiceTest extends AbstractBaseTest {
 
     private Person person;
 

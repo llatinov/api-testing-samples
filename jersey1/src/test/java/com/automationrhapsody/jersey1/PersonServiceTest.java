@@ -5,6 +5,8 @@ import com.automationrhapsody.jersey1.rules.PersonServiceJerseyClient;
 
 import java.util.List;
 
+import org.assertj.core.api.SoftAssertions;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -17,6 +19,8 @@ public class PersonServiceTest {
     @ClassRule
     public static final PersonServiceJerseyClient CLIENT = new PersonServiceJerseyClient();
 
+    private SoftAssertions softAssertions;
+
     private Person person;
 
     @Before
@@ -26,6 +30,13 @@ public class PersonServiceTest {
         person.setFirstName("First Name");
         person.setLastName("Last Name");
         person.setEmail("Email");
+
+        softAssertions = new SoftAssertions();
+    }
+
+    @After
+    public void tearDown() {
+        softAssertions.assertAll();
     }
 
     @Test
@@ -37,7 +48,10 @@ public class PersonServiceTest {
         assertThat(saveResult, is("Added Person with id=123"));
 
         Person actual = CLIENT.get(person.getId());
-        assertThat(actual.toString(), is(person.toString()));
+        softAssertions.assertThat(actual.getId()).isEqualTo(person.getId());
+        softAssertions.assertThat(actual.getFirstName()).isEqualTo(person.getFirstName());
+        softAssertions.assertThat(actual.getLastName()).isEqualTo(person.getLastName());
+        softAssertions.assertThat(actual.getEmail()).isEqualTo(person.getEmail());
 
         persons = CLIENT.getAll();
         assertThat(persons.size(), is(5));
