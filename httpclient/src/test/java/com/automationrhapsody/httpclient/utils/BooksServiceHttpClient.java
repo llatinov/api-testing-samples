@@ -18,9 +18,9 @@ import org.apache.http.impl.client.HttpClients;
 
 public class BooksServiceHttpClient {
 
-    private static final String BOOKS = "http://automationrhapsody.com/examples/books.xml";
-    private static final String BOOKS_SOAP = "http://automationrhapsody.com/examples/books-soap.xml";
-    private static final String BOOKS_SERVICE = "http://automationrhapsody.com/examples/books-service.php";
+    private static final String BOOKS = "http://automationrhapsody.com/examples/api-testing-books-endpoint/books.xml";
+    private static final String BOOKS_SOAP = "http://automationrhapsody.com/examples/api-testing-books-endpoint/books-soap.xml";
+    private static final String BOOKS_SERVICE = "http://automationrhapsody.com/examples/api-testing-books-endpoint/books-service.php";
 
     private CloseableHttpClient personServiceClient;
 
